@@ -1,15 +1,9 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>Virtual Humans</title>
+<script src="script.js" defer></script>
+
 <h1>Virtual Humans</h1>
 
 <button id="fetch-data">Summon</button>
 <pre id="data"></pre>
-
-<script>
-  document.getElementById('fetch-data').addEventListener('click', async () => {
-    const res = await fetch('https://randomuser.me/api');
-    const data = await res.json();
-    document.getElementById('data').textContent = JSON.stringify(data, null, 2);
-  });
-</script>
