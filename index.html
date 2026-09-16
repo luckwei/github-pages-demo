@@ -6,7 +6,7 @@
 
 <button id="randomize">Random color</button>
 <button id="fetch-data">Fetch random user</button>
-<p id="data">-no user-</p>
+<pre id="data">-no user-</pre>
 
 <script>
   document.getElementById('randomize').addEventListener('click', () => {
@@ -16,6 +16,6 @@
   document.getElementById('fetch-data').addEventListener('click', async () => {
     const res = await fetch('https://randomuser.me/api');
     const data = await res.json();
-    document.getElementById('data').textContent = JSON.stringify(data);
+    document.getElementById('data').textContent = JSON.stringify(data, null, 2);
   });
 </script>
