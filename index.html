@@ -1,11 +1,34 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>github-pages-demo</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 50rem; }
+  pre { white-space: pre-wrap; word-break: break-all; background: #f4f4f4; padding: 1rem; }
+</style>
+
 <h1 id="heading">It works.</h1>
 <p>Served by GitHub Pages from <code>main</code> branch root.</p>
+
 <button id="randomize">Random color</button>
+<button id="fetch-user">Fetch random user</button>
+
+<pre id="output">(nothing yet)</pre>
+
 <script>
   document.getElementById('randomize').addEventListener('click', () => {
     document.getElementById('heading').style.color = `hsl(${Math.random() * 360} 70% 45%)`;
+  });
+
+  const output = document.getElementById('output');
+
+  document.getElementById('fetch-user').addEventListener('click', async () => {
+    output.textContent = 'loading...';
+    try {
+      const res = await fetch('https://randomuser.me/api');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      output.textContent = await res.text();
+    } catch (err) {
+      output.textContent = `failed: ${err.message}`;
+    }
   });
 </script>
