@@ -1,5 +1,11 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>github-pages-demo</title>
-<h1>It works.</h1>
+<h1 id="heading">It works.</h1>
 <p>Served by GitHub Pages from <code>main</code> branch root.</p>
+<button id="randomize">Random color</button>
+<script>
+  document.getElementById('randomize').addEventListener('click', () => {
+    document.getElementById('heading').style.color = `hsl(${Math.random() * 360} 70% 45%)`;
+  });
+</script>
