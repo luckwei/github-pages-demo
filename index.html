@@ -5,18 +5,17 @@
 <p>Served by GitHub Pages from <code>main</code> branch root.</p>
 
 <button id="randomize">Random color</button>
-<button id="fetch-user">Fetch random user</button>
-<p id="user">-no user-</p>
+<button id="fetch-data">Fetch random user</button>
+<p id="data">-no user-</p>
 
 <script>
   document.getElementById('randomize').addEventListener('click', () => {
     document.getElementById('heading').style.color = `hsl(${Math.random() * 360} 70% 45%)`;
   });
 
-  document.getElementById('fetch-user').addEventListener('click', async () => {
+  document.getElementById('fetch-data').addEventListener('click', async () => {
     const res = await fetch('https://randomuser.me/api');
     const data = await res.json();
-    const person = data.results[0];
-    document.getElementById('user').textContent = `${person.name.first} ${person.name.last}`;
+    document.getElementById('data').textContent = JSON.stringify(data);
   });
 </script>
